@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  /* Coastal Blues Palette */
+  --coastal-deep-navy: #081c2c;
+  --coastal-midnight: #0a3052;
+  --coastal-ocean-blue: #004e82;
+  --coastal-aegean: #2c6e91;
+  --coastal-steel: #3b88a8;
+  --coastal-wave: #5b9dbf;
+  --coastal-surf: #89c2d9;
+  --coastal-foam: #a9d6e5;
+  --coastal-pale: #eaf4f8;
+  --white: #ffffff;
+
+  /* Theme Surfaces & Backgrounds */
+  --bg-dark: #071624;
+  --bg-gradient: linear-gradient(180deg, #081c2c 0%, #0a273f 35%, #004e82 70%, #081c2c 100%);
+  --bg-card: rgba(10, 39, 63, 0.82);
+  --bg-card-hover: rgba(15, 55, 88, 0.9);
+  --bg-card-border: #2c6e91;
+  --bg-card-border-glow: #89c2d9;
+  --bg-surface: rgba(137, 194, 217, 0.12);
+
+  /* Accents */
+  --accent-cyan: #89c2d9;
+  --accent-cyan-glow: rgba(137, 194, 217, 0.4);
+  --accent-violet: #004e82;
+  --accent-violet-glow: rgba(0, 78, 130, 0.5);
+  --accent-emerald: #5b9dbf;
+  --accent-emerald-glow: rgba(91, 157, 191, 0.35);
+
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d6eaf2;
+  --text-muted: #89c2d9;
+  --text-highlight: #ffffff;
+
+  /* Shadows & Glassmorphism */
+  --glass-blur: blur(16px);
+  --glass-blur-heavy: blur(24px);
+  --shadow-glow-cyan: 0 0 30px rgba(137, 194, 217, 0.35);
+  --shadow-glow-violet: 0 0 35px rgba(0, 78, 130, 0.45);
+  --shadow-card: 0 16px 36px -10px rgba(4, 15, 26, 0.8);
+
+  /* Layout */
+  --max-width: 1240px;
+  --nav-height: 72px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--coastal-deep-navy);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Coastal Blues Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #081c2c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--coastal-aegean);
+  border-radius: 5px;
+  border: 1px solid var(--coastal-surf);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--coastal-surf);
+  box-shadow: 0 0 12px var(--coastal-surf);
+}
+
+/* Selection */
+::selection {
+  background: var(--coastal-surf);
+  color: var(--coastal-deep-navy);
+}
+
+/* Utilities */
+.mono {
+  font-family: var(--font-mono);
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #ffffff 0%, #89c2d9 55%, #004e82 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-violet {
+  background: linear-gradient(135deg, #ffffff 0%, #89c2d9 60%, #2c6e91 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-rainbow {
+  background: linear-gradient(90deg, #89c2d9, #ffffff, #5b9dbf, #004e82);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes floatAnim {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Base UI Elements */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+/* App Container */
+#root {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.section-padding {
+  padding: 100px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 70px 0;
+  }
+  .content-container {
+    padding: 0 16px;
+  }
+}
